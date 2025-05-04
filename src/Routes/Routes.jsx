@@ -1,21 +1,24 @@
 import { createBrowserRouter } from "react-router";
+import HomeLayout from "../layouts/HomeLayout/HomeLayout";
+import AuthLayout from "../layouts/AuthLayout/AuthLayout";
+import NewsLayout from "../layouts/NewsLayout/NewsLayout";
 
 const router = createBrowserRouter([
     {
         path: '/', 
-        element: <h2>Home Layout</h2>
+        Component: HomeLayout
     }, 
     {
         path: '/auth',
-        element: <h2>Auth layout</h2>
+        Component: AuthLayout
     }, 
     {
         path: '/news', 
-        element: <h2>News Layout</h2>
+        Component: NewsLayout
     }, 
     {
         path: '/*', 
-        element: <h1 className="text-3xl font-bold text-center">404</h1>
+        element: <h1 className="text-7xl font-extrabold text-center mt-20">404</h1>
     }
 ]); 
 
