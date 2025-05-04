@@ -1,9 +1,16 @@
 import React from 'react';
+import Header from '../../Components/Header';
 
 const NewsLayout = () => {
     return (
         <div>
-            <h3 className="text-2xl">Hello from news Layout </h3>
+            <header>
+                <Header></Header>
+            </header>
+            <main>
+                <section className="left">Content</section>
+                <section className="right">Right Nav</section>
+            </main>
         </div>
     );
 };
