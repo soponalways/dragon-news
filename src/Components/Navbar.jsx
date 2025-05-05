@@ -1,14 +1,26 @@
 import React, { use } from 'react';
 import { NavLink, useNavigate } from 'react-router';
-import userlogo from '../assets/user.png'; 
+import userlogo from '../assets/user.png';
 import AuthContext from '../Provider/AuthContext';
 
 const Navbar = () => {
-    const navigate = useNavigate(); 
-    const {user} = use(AuthContext); 
-    
+    const navigate = useNavigate();
+    const { user, logOut } = use(AuthContext);
+
     const handelLoginClick = () => {
         navigate('/auth/login')
+    }; 
+
+    const handleSignOut =() => {
+        console.log("user trying to logout "); 
+        logOut()
+        .then(() => {
+            console.log('user successfully logout')
+        }).catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert(errorCode, errorMessage)
+        })
     }
     return (
         <div className='flex justify-between items-center my-5'>
@@ -20,7 +32,11 @@ const Navbar = () => {
             </section>
             <section className="end flex gap-3">
                 <img src={userlogo} alt="" />
-                <button onClick={handelLoginClick} className='btn btn-primary px-10 text-lg'>Login</button>
+                {
+                    user ?
+                        <button onClick={handleSignOut} className='btn btn-primary px-10 text-lg'>Logout</button> :
+                        <button onClick={handelLoginClick} className='btn btn-primary px-10 text-lg'>Login</button>
+                }
             </section>
         </div>
     );
