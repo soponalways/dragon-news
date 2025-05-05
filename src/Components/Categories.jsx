@@ -1,5 +1,6 @@
 import React, { use } from 'react';
 import { NavLink } from 'react-router';
+import AuthContext from '../Provider/AuthContext';
 
 const categoriesPromise = fetch('/categories.json').then(res => res.json());
 
