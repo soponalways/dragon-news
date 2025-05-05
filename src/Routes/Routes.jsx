@@ -4,6 +4,8 @@ import AuthLayout from "../layouts/AuthLayout/AuthLayout";
 import NewsLayout from "../layouts/NewsLayout/NewsLayout";
 import Home from "../pages/Home";
 import CategoryNews from "../pages/CategoryNews";
+import Login from "../pages/Auth/Login";
+import Register from "../pages/Auth/Register";
 
 const router = createBrowserRouter([
     {
@@ -23,7 +25,17 @@ const router = createBrowserRouter([
     }, 
     {
         path: '/auth',
-        Component: AuthLayout
+        Component: AuthLayout, 
+        children: [
+            {
+                path: '/auth/login', 
+                Component: Login
+            }, 
+            {
+                path: '/auth/register', 
+                Component: Register
+            }
+        ]
     }, 
     {
         path: '/news', 

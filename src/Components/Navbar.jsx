@@ -1,8 +1,12 @@
 import React from 'react';
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
 import userlogo from '../assets/user.png'; 
 
 const Navbar = () => {
+    const navigate = useNavigate(); 
+    const handelLoginClick = () => {
+        navigate('/auth/login')
+    }
     return (
         <div className='flex justify-between items-center my-5'>
             <section className="start text-transparent">HI Iam Nav bar here are  </section>
@@ -13,7 +17,7 @@ const Navbar = () => {
             </section>
             <section className="end flex gap-3">
                 <img src={userlogo} alt="" />
-                <button className='btn btn-primary px-10 text-lg'>Login</button>
+                <button onClick={handelLoginClick} className='btn btn-primary px-10 text-lg'>Login</button>
             </section>
         </div>
     );

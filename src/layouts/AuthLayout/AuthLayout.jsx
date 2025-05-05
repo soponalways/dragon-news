@@ -1,9 +1,16 @@
 import React from 'react';
+import { Outlet } from 'react-router';
+import Navbar from '../../Components/Navbar';
 
 const AuthLayout = () => {
     return (
         <div>
-            <h3 className="text-2xl">Hello from Auth Layout </h3>
+            <header  className='w-11/12 mx-auto py-4'>
+                <Navbar></Navbar>
+            </header>
+            <main  className='w-11/12 mx-auto py-4'>
+                <Outlet />
+            </main>
         </div>
     );
 };
