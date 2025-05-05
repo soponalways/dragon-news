@@ -3,6 +3,7 @@ import HomeLayout from "../layouts/HomeLayout/HomeLayout";
 import AuthLayout from "../layouts/AuthLayout/AuthLayout";
 import NewsLayout from "../layouts/NewsLayout/NewsLayout";
 import Home from "../pages/Home";
+import CategoryNews from "../pages/CategoryNews";
 
 const router = createBrowserRouter([
     {
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
             {
                 index: true, 
                 Component: Home
+            }, 
+            {
+                path: '/category/:id', 
+                Component: CategoryNews
             }
         ]
     }, 

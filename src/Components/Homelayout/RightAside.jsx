@@ -1,9 +1,11 @@
 import React from 'react';
+import SocialLogin from './SocialLogin';
+import FindUsOn from './FindUsOn';
 
 const RightAside = () => {
     return (
         <div>
-            Hello from Right Aside 
+            <SocialLogin></SocialLogin>
         </div>
     );
 };
