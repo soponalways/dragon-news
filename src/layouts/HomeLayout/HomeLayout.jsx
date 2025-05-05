@@ -18,7 +18,7 @@ const HomeLayout = () => {
                     <Navbar></Navbar>
                 </nav>
             </header>
-            <main className='grid grid-cols-12 my-10'>
+            <main className='grid grid-cols-12 gap-4 my-10'>
                 <aside className='col-span-3'>
                     <LeftAside></LeftAside>
                 </aside>

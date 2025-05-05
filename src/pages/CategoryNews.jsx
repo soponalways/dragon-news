@@ -30,7 +30,7 @@ const CategoryNews = () => {
     return (
         <div>
             <h1 className="text-3xl font-semibold text-center">Total - {categoryNews.length} News Found</h1>
-            <div className='grid grid-cols-1 p-4 gap-5 md:gap-7'>
+            <div className='grid grid-cols-1 gap-5 md:gap-7'>
                 {
                     categoryNews.map(news => <NewsCard key={news.id} news={news}></NewsCard>)
                 }
