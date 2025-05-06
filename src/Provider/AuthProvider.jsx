@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import AuthContext from './AuthContext';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
 import app from '../firebase/firebase.config'
 
 const AuthProvider = ({ children }) => {
     // Hook Call Here 
-    const [user , setUser] = useState(null)
+    const [user , setUser] = useState(null); 
+    console.log(user)
     const [loading, setLoading] = useState(true); 
 
     const auth = getAuth(app)
@@ -17,6 +18,9 @@ const AuthProvider = ({ children }) => {
     const login = (email, password) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password )
+    }
+    const updateUser = (updated) => {
+        return updateProfile(auth.currentUser, updated)
     }
     
     const logOut = () => {
@@ -42,6 +46,7 @@ const AuthProvider = ({ children }) => {
         logOut, 
         loading,
         setLoading,
+        updateUser
     }
     
     
