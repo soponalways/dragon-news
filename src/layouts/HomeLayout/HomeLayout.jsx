@@ -1,12 +1,15 @@
 import React from 'react';
 import Header from '../../Components/Header';
-import { Outlet } from 'react-router';
+import { Outlet, useNavigation } from 'react-router';
 import LatestNews from '../../Components/LatestNews';
 import Navbar from '../../Components/Navbar';
 import LeftAside from '../../Components/Homelayout/LeftAside';
 import RightAside from '../../Components/Homelayout/RightAside';
+import Loading from '../../pages/Loading';
 
 const HomeLayout = () => {
+    const {state} = useNavigation(); 
+    console.log(state)
     return (
         <div className='w-11/12 mx-auto'>
             <header>
@@ -23,7 +26,7 @@ const HomeLayout = () => {
                     <LeftAside></LeftAside>
                 </aside>
                 <section className="main col-span-6">
-                    <Outlet></Outlet>
+                    {state === 'loading' ? (<Loading></Loading>) : <Outlet></Outlet>}
                 </section>
                 <aside className='col-span-3 sticky h-fit top-1'>
                     <RightAside></RightAside>

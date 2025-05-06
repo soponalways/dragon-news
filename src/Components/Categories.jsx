@@ -1,13 +1,12 @@
 import React, { use } from 'react';
 import { NavLink } from 'react-router';
-import AuthContext from '../Provider/AuthContext';
 
 const categoriesPromise = fetch('/categories.json').then(res => res.json());
 
 const Categories = () => {
     const categories = use(categoriesPromise); 
     const handleScrool = () => {
-        window.scrollTo({top: 0, behavior: 'smooth'})
+        window.scrollTo({top: 300, behavior: 'smooth'})
     }
     return (
         <div>
