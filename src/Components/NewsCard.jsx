@@ -3,6 +3,7 @@ import { FaEye, FaStar } from "react-icons/fa";
 import { format } from "date-fns";
 import { CiShare2 } from "react-icons/ci";
 import { FiBookmark } from "react-icons/fi";
+import { Link } from "react-router";
 
 const NewsCard = ({ news }) => {
     const {
@@ -12,6 +13,7 @@ const NewsCard = ({ news }) => {
         details,
         total_view,
         rating,
+        id
     } = news;
 
     const formattedDate = format(new Date(author.published_date), "yyyy-MM-dd");
@@ -50,10 +52,10 @@ const NewsCard = ({ news }) => {
             {/* Details */}
             <div className="p-4 text-gray-700 text-sm">
                 {details.slice(0, 200)}...
-                <span className="text-orange-500 font-semibold cursor-pointer">
+                <Link to={`/news-details/${id}`} className="text-orange-500 font-semibold cursor-pointer">
                     {" "}
                     Read More
-                </span>
+                </Link>
             </div>
 
             {/* Footer Info */}
