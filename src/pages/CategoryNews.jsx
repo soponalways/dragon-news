@@ -7,7 +7,6 @@ const CategoryNews = () => {
     const data = useLoaderData(); 
 
     const [categoryNews , setCategoryNews] = useState([]); 
-    // console.log(categoryNews)
 
     // Handle Side Effect 
     useEffect(() => {
@@ -20,7 +19,6 @@ const CategoryNews = () => {
             return; 
         } else {
             const filteredData = data.filter(news => news.category_id == id); 
-            // console.log(filteredData)
             setCategoryNews(filteredData); 
         }; 
 

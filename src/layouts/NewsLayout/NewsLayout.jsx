@@ -17,7 +17,6 @@ const NewsLayout = () => {
         });
         setNews(singleNews);
     }, [data, id]);
-    console.log(news)
 
     if (!news) {
         return (

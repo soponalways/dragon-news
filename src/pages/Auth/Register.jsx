@@ -28,8 +28,6 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log({ name, photo, password, email })
-
         // Create User 
         createUser(email, password)
         .then(userCredential => {
@@ -43,9 +41,7 @@ const Register = () => {
                 setError(error.message); 
                 setUser(userCredential.user)
             } )
-            // console.log(userCredential)
         }).catch(error => {
-            console.log(error.message)
             setError(error.message); 
         })
     }

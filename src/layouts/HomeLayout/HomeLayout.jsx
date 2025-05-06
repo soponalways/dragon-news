@@ -9,7 +9,6 @@ import Loading from '../../pages/Loading';
 
 const HomeLayout = () => {
     const {state} = useNavigation(); 
-    console.log(state)
     return (
         <div className='w-11/12 mx-auto'>
             <header>
