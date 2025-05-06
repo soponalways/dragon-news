@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { Link } from 'react-router';
 import AuthContext from '../../Provider/AuthContext';
 
@@ -6,12 +6,22 @@ const Register = () => {
 
     // Handle Register 
     const { createUser, setUser } = use(AuthContext); 
-
+    const [nameError , setNameError] = useState(''); 
+    const [error , setError] = useState(''); 
+    
     const handleRegister = e => {
         e.preventDefault();
 
+        // REsett
+        setNameError('');
+        setError(''); 
+
         const form = e.target;
         const name = form.name.value;
+        if(name.length < 5 ) {
+            setNameError("Name Must be 5 charechter "); 
+            return; 
+        }
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
@@ -25,6 +35,7 @@ const Register = () => {
             console.log(userCredential)
         }).catch(error => {
             console.log(error.message)
+            setError(error.message); 
         })
     }
     return (
@@ -36,20 +47,22 @@ const Register = () => {
 
                         {/* Name  */}
                         <label className="label">Name</label>
-                        <input type="text" name='name' className="input" placeholder="Enter Your Name" />
-
+                        <input type="text" required name='name' className="input" placeholder="Enter Your Name" />
+                            {nameError && <p className='text-red-500 text-sm'>{nameError}</p>}
                         {/* Photo URL  */}
                         <label className="label">Photo URL</label>
-                        <input type="text" name='photo' className="input" placeholder="Enter Your Photo URL" />
+                        <input type="text" required name='photo' className="input" placeholder="Enter Your Photo URL" />
 
                         {/* Email  */}
                         <label className="label">Email</label>
-                        <input type="email" name='email' className="input" placeholder="Enter Your Email" />
+                        <input type="email" required name='email' className="input" placeholder="Enter Your Email" />
 
                         {/* password  */}
                         <label className="label">Password</label>
-                        <input type="password" name='password' className="input" placeholder="Enter Your Password" />
+                        <input type="password" required name='password' className="input" placeholder="Enter Your Password" />
 
+                        {/* Error message  */}
+                        {error && <p className='text-sm text-red-500'>{error}</p>}
                         {/* Submit or Register  */}
                         <button type='submit' className="btn btn-neutral mt-4">Register</button>
                     </form>
