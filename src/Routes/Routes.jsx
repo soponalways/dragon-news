@@ -38,8 +38,9 @@ const router = createBrowserRouter([
         ]
     }, 
     {
-        path: '/news', 
-        Component: NewsLayout
+        path: '/news-details/:id', 
+        Component: NewsLayout, 
+        loader: () => fetch('/news.json')
     }, 
     {
         path: '/*', 
