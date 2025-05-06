@@ -13,6 +13,8 @@ const router = createBrowserRouter([
     {
         path: '/', 
         Component: HomeLayout, 
+        HydrateFallback: Loading, 
+        loader: () => fetch('/news.json'),
         children : [
             {
                 index: true, 
