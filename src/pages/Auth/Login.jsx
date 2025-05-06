@@ -1,12 +1,13 @@
-import React, { use, useState } from 'react';
+import React, { use, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import AuthContext from '../../Provider/AuthContext';
 
 const Login = () => {
-    const { login , setUser} = use(AuthContext); 
+    const { login, setUser, forgotPassword } = use(AuthContext); 
     const location = useLocation(); 
     const navigate = useNavigate(); 
     const [error , setError] = useState(''); 
+    const emailRef = useRef(''); 
     
     const handleLogin = (e) => {
         e.preventDefault(); 
@@ -28,6 +29,20 @@ const Login = () => {
             // alert(errorCode, errorMessage)
             setError(errorCode, errorMessage); 
         })
+    }; 
+
+    // Handle Forgot pasword 
+    const handleForgot = () => {
+        console.log('User Trying To Forgot Password '); 
+        const email = emailRef.current.value; 
+        
+        // Forgot 
+        forgotPassword(email)
+        .then(() => {
+            alert("We are sent an password reset email ? please Check your inbox")
+        }).catch(error => {
+            setError(error.message)
+        })
     }
     return (
         <div className='flex justify-center items-center min-h-[calc(100vh-100px)]'>
@@ -38,14 +53,14 @@ const Login = () => {
                         
                         {/* Email */}
                         <label className="label">Email</label>
-                        <input type="email" required name='email' className="input" placeholder="Enter Your Email" />
+                        <input type="email" required ref={emailRef} name='email' className="input" placeholder="Enter Your Email" />
 
                         {/* Password */}
                         <label className="label">Password</label>
                         <input type="password" required name='password' className="input" placeholder="Enter Your Password " />
 
                         {/* Forgot Password and Login Button  */}
-                        <div><a className="link link-hover">Forgot password?</a></div>
+                        <div><a onClick={handleForgot} className="link link-hover">Forgot password?</a></div>
                         {error && <p className='text-red-600 font-semibold text-sm'>{error}</p>}
                         <button type='submit' className="btn btn-neutral mt-4">Login</button>
                     </form>
